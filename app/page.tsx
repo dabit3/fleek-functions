@@ -11,7 +11,6 @@ fal.config({
   proxyUrl: "/api/fal",
 })
 
-
 export default function Home() {
   const [input, setInput] = useState<string>('')
   const [isGenerating, setIsGenerating] = useState(false)
