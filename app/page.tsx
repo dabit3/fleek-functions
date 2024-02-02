@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { toast } from 'sonner'
 import { CounterClockwiseClockIcon } from "@radix-ui/react-icons"
+import { Toaster } from "@/components/ui/sonner"
 
 import * as fal from "@fal-ai/serverless-client"
 
@@ -23,7 +24,6 @@ export default function Home() {
       "https://for-browser.fleektester.com"
     );
     const prompt = await fetch(httpsLink).then(res => res.text())
-    console.log('prompt:', prompt)
     setInput(prompt)
   }
 
@@ -83,21 +83,22 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center p-24">
       <div className="flex flex-col">
         <p className="text-xl font-semibold">Describe your video</p>
-        {
-          isGenerating && (<
-            CounterClockwiseClockIcon
-            className="animate-spin w-6 h-6 my-4" />
-            )
-        }
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="rounded-lg my-3 border-2 border-gray-300 p-2 w-96"
         />
         <button
-        className="bg-blue-500 text-white p-2 ml-2 rounded-xl"
+        className="flex justify-center bg-blue-500 text-white p-2 ml-2 rounded-xl"
         onClick={createVideo}
         >
+          {
+          isGenerating && (
+            <img
+            src="/loading.svg"
+            className="animate-spin w-6 h-6 mr-2" />
+            )
+        }
           Create
         </button>
         <button
@@ -125,6 +126,7 @@ export default function Home() {
           ))
         }
       </div>
+      <Toaster />
     </main>
   );
 }
