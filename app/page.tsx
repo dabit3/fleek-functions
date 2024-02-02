@@ -17,7 +17,12 @@ export default function Home() {
   const [videos, setVideos] = useState<any>([])
 
   async function getPrompt() {
-    const prompt = await fetch("http://fleek-test.network/services/1/ipfs/QmZHvxWcpmaZAy1E8xxZTNDttuepfZaxtML2Ui5hUwtKPt").then(res => res.text())
+    let link = "http://fleek-test.network/services/1/ipfs/QmZHvxWcpmaZAy1E8xxZTNDttuepfZaxtML2Ui5hUwtKPt"
+    const httpsLink = link.replace(
+      "http://fleek-test.network",
+      "https://for-browser.fleektester.com"
+    );
+    const prompt = await fetch(httpsLink).then(res => res.text())
     console.log('prompt:', prompt)
     setInput(prompt)
   }
