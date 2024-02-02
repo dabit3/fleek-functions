@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { toast } from 'sonner'
-import { CounterClockwiseClockIcon } from "@radix-ui/react-icons"
 import { Toaster } from "@/components/ui/sonner"
 
 import * as fal from "@fal-ai/serverless-client"
@@ -17,11 +16,11 @@ export default function Home() {
   const [videos, setVideos] = useState<any>([])
 
   async function getPrompt() {
-    let link = "http://fleek-test.network/services/1/ipfs/QmZHvxWcpmaZAy1E8xxZTNDttuepfZaxtML2Ui5hUwtKPt"
+    let link = "http://fleek-test.network/services/1/ipfs/QmNdUvAWYTbkmnfv88HVX4o6A3Q1KcnUjAy9GedCjH6b8v"
     const httpsLink = link.replace(
       "http://fleek-test.network",
       "https://for-browser.fleektester.com"
-    );
+    )
     const prompt = await fetch(httpsLink).then(res => res.text())
     setInput(prompt)
   }
