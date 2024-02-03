@@ -31,7 +31,6 @@ export default function Home() {
         toast('Please enter a description for your video.')
         return
       }
-      scroll()
       setIsGenerating(true)
       let imageToUpload = await createImage()
       const result = await fal.subscribe('fal-ai/svd', {
