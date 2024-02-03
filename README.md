@@ -11,3 +11,19 @@ FAL_KEY="your-api-key"
 ```
 
 ![Preview](image.png)
+
+## Example code for function
+
+```typescript
+const main = (params) => {
+  return getPrompt()
+}
+
+function getPrompt() {
+    return imagePrompts[Math.floor(Math.random() * imagePrompts.length)]
+}
+
+const imagePrompts = [
+  // 1000 prompts
+]
+```
